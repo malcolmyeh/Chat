@@ -18,6 +18,9 @@ class SendMessage extends Component {
   };
   handleTextSubmit = e => {
     e.preventDefault();
+    if (this.state.text === ""){
+        return false;
+    }
     this.pushDB(this.state.text, this.state.name);
     this.setState({
       text: ""
