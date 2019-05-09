@@ -42,6 +42,8 @@ class App extends Component {
       });
   };
 
+  
+
   renderMessages = () => {
     return this.state.messages.map(message => (
       <ListItem>
