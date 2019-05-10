@@ -3,3 +3,5 @@ Check it out live at <a href="https://malcolmyeh.github.io/Chat/">https://malcol
 Features to be added:
 - [ ] Authentication
 - [x] Formating for mobile browser
+- [ ] Reply to particular message
+- [ ] Multiple chatrooms
