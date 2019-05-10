@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import firebase from "firebase";
 import SendMessage from "./SendMessage";
-import { ListItem, ListItemText, TextField, List } from "@material-ui/core";
 
 class App extends Component {
-
   state = {
     messages: []
   };
@@ -20,13 +18,17 @@ class App extends Component {
     };
     firebase.initializeApp(config);
     this.getMessages();
+    this.interval = setInterval(() => this.renderMessages(), 100);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   getMessages = () => {
     firebase
       .database()
       .ref("messages/")
-      .limitToLast(15)
+      .limitToLast(9)
       .on("value", snapshot => {
         let newMessages = [];
         snapshot.forEach(child => {
@@ -42,25 +44,25 @@ class App extends Component {
       });
   };
 
-  
-
   renderMessages = () => {
     return this.state.messages.map(message => (
-      <ListItem>
-        <ListItemText>{message.name + ": " + message.text}</ListItemText>
-        <ListItemText>         
-            {Math.floor((Date.now()-message.time)/60000) + " minutes ago"}
-        </ListItemText>
-      </ListItem>
+      <div>
+        <p align="left">{message.name + ": " + message.text}</p>
+        <p align="right">
+          {"sent " +
+            Math.floor((Date.now() - message.time) / 1) + //divide 60000
+            " minutes ago"}
+        </p>
+      </div>
     ));
   };
 
   render() {
     return (
       <div className="App">
-        <h1>AnonChat</h1>
+        <h1>Anonymous Chatroom</h1>
+        {this.renderMessages()}
         <SendMessage sendmessage />
-        <List>{this.renderMessages()}</List>
       </div>
     );
   }

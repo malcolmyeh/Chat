@@ -1,6 +1,9 @@
 .App {
+  padding-right: 20px;
+  padding-left: 20px;
   text-align: center;
 }
+
 
 .App-header {
   background-color: #282c34;
