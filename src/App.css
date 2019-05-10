@@ -1,7 +1,17 @@
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0; 
+  width: 100%; 
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
 .App {
   padding-right: 20px;
   padding-left: 20px;
-  text-align: center;
+  text-align: left;
 }
 
 
