@@ -5,3 +5,4 @@ Features to be added:
 - [x] Formating for mobile browser
 - [ ] Reply to particular message
 - [ ] Multiple chatrooms
+- [ ] Avatars
